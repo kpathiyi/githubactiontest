@@ -19,7 +19,7 @@ on:
         options:
           - app1
           - app2
-      job:
+      job_name:
         description: "select action"
         required: true
         default: "build-and-publish"
@@ -36,7 +36,7 @@ env:
 jobs:
   build-and-publish:
     name: build-and-publish
-    # if: github.event.inputs.job == 'build-and-publish'
+    if: github.event.inputs.job_name == 'build-and-publish'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -78,7 +78,7 @@ jobs:
 
   deploy:
     name: 'deploy'
-    # if: github.event.inputs.job == 'deploy-to-dev'
+    if: github.event.inputs.job_name == 'deploy-to-dev'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
