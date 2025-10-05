@@ -72,15 +72,15 @@ jobs:
         aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin $ECR_REGISTRY
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
-    deploy:
-      name: 'deploy'
-      if: github.event.inputs.job == 'deploy-to-dev'
-      runs-on: ubuntu-latest
-      steps:
-      - uses: actions/checkout@v4
-      - name: create ecs services/tasks
-        run: |
-          pwd
-          ls -al
-          aws ecs list-services --cluster test5
+  deploy:
+    name: 'deploy'
+    if: github.event.inputs.job == 'deploy-to-dev'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: create ecs services/tasks
+      run: |
+        pwd
+        ls -al
+        aws ecs list-services --cluster test5
     
