@@ -63,7 +63,8 @@ jobs:
 
     - name: Build and tag image
       env:
-        IMAGE_TAG: ${{ github.sha }}
+        GITHUB_SHA: ${{ github.sha }}
+        IMAGE_TAG: ${GITHUB_SHA::7}
       run: |
         echo "github.event.inputs.job"
         echo ${{ github.event.inputs.job }}
