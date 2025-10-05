@@ -69,6 +69,7 @@ jobs:
         echo ${{ github.event.inputs.job }}
         echo ${{ github.sha }}
         export IMAGE_TAG="${MY_GITHUB_SHA::8}"
+        echo "IMAGE_TAG: ${IMAGE_TAG::7}"
         echo "GITHUB_SHA: ${GITHUB_SHA::7}"
         echo "MY_GITHUB_SHA: ${MY_GITHUB_SHA}"
         
