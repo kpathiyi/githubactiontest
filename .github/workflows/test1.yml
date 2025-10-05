@@ -36,7 +36,7 @@ env:
 jobs:
   build-and-publish:
     name: build-and-publish
-    if: github.event.inputs.job == 'build-and-publish'
+    # if: github.event.inputs.job == 'build-and-publish'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -65,6 +65,10 @@ jobs:
       env:
         IMAGE_TAG: ${{ github.sha }}
       run: |
+        echo "github.event.inputs.job"
+        echo ${{ github.event.inputs.job }}
+        echo ${{ github.sha }}
+        echo ${{ github.sha::7 }}
         ./gradlew jibDockerBuild -Djib.to.image=githubactiontest:latest
         docker images
         docker tag githubactiontest:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
@@ -74,7 +78,7 @@ jobs:
 
   deploy:
     name: 'deploy'
-    if: github.event.inputs.job == 'deploy-to-dev'
+    # if: github.event.inputs.job == 'deploy-to-dev'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
