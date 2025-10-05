@@ -19,22 +19,24 @@ on:
         options:
           - app1
           - app2
-      env:
-        description: "select env"
+      job:
+        description: "select action"
         required: true
-        default: "dev"
+        default: "build-and-publish"
         type: choice
         options:
-          - dev
-          - qa
+          - build-and-publish
+          - deploy-to-dev
+          - deploy-to-qa
 
 env:
   AWS_REGION: us-east-1                   # set this to your preferred AWS region, e.g. us-west-1
   ECR_REGISTRY: 382770461564.dkr.ecr.us-east-1.amazonaws.com
   ECR_REPOSITORY: githubactiontest
 jobs:
-  build:
-
+  build-and-publish:
+    name: build-and-publish
+    if: github.event.inputs.job == 'build-and-publish'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -71,6 +73,8 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
     deploy:
+      name: 'deploy'
+      if: github.event.inputs.job == 'deploy-to-dev'
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@v4
