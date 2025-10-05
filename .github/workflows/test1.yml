@@ -63,7 +63,7 @@ jobs:
 
     - name: Build and tag image
       env:
-        GITHUB_SHA: ${{ github.sha }}
+        MY_GITHUB_SHA: ${{ github.sha }}
         IMAGE_TAG: ${GITHUB_SHA::8}
       run: |
         echo "github.event.inputs.job"
@@ -71,12 +71,13 @@ jobs:
         echo ${{ github.sha }}
         echo ${GITHUB_SHA::7}
         echo "IMAGE_TAG: ${IMAGE_TAG}"
+        echo "MY_GITHUB_SHA: ${MY_GITHUB_SHA}"
         ./gradlew jibDockerBuild -Djib.to.image=githubactiontest:latest
         docker images
-        docker tag githubactiontest:latest $ECR_REGISTRY/$ECR_REPOSITORY:${GITHUB_SHA::7}
+        docker tag githubactiontest:latest $ECR_REGISTRY/$ECR_REPOSITORY:${MY_GITHUB_SHA::7}
         
         aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin $ECR_REGISTRY
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:${GITHUB_SHA::7}
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:${MY_GITHUB_SHA::7}
 
   deploy:
     name: 'deploy'
