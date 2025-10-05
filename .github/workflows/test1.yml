@@ -63,7 +63,7 @@ jobs:
       env:
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        ./gradlew jibDockerBuild -Djib.to.image=myimage:latest
+        ./gradlew jibDockerBuild -Djib.to.image=githubactiontest:latest
         docker images
         docker tag githubactiontest:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         
