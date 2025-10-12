@@ -91,6 +91,10 @@ jobs:
         curl -X GET https://www.google.com
         echo '---- does image have node? ----'
         node --version
+        echo '---- does image have python? ----'
+        python --version
+        echo '---- does image have yq? ----'
+        yq --version
         
         echo '---- end of script ----'
 
