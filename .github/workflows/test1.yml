@@ -73,6 +73,9 @@ jobs:
         echo "GITHUB_SHA: ${GITHUB_SHA::7}"
         echo "MY_GITHUB_SHA: ${MY_GITHUB_SHA}"
         
+        pwd
+        ls -al
+        
         ./gradlew jibDockerBuild -Djib.to.image=githubactiontest:latest
         docker images
         docker tag githubactiontest:latest $ECR_REGISTRY/$ECR_REPOSITORY:${IMAGE_TAG}
