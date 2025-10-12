@@ -95,6 +95,8 @@ jobs:
         python --version
         echo '---- does image have yq? ----'
         yq --version
+        echo '---- does image have scala? ----'
+        scala -version
         
         echo '---- end of script ----'
 
