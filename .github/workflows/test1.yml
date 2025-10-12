@@ -79,6 +79,12 @@ jobs:
         
         aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin $ECR_REGISTRY
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:${IMAGE_TAG}
+        echo '---- does image have envsubst?  ----'
+        echo 'Time to say $HELLO' > welcome.txt
+        export HELLO="good morning"
+        envsubst < welcome.txt
+        echo '---- does image have envsubst? ----'
+        echo '{"id": 123, "data": "{\"name\":\"Alice\",\"age\":30}"}' | jq '.data | fromjson | .name' 
 
   deploy:
     name: 'deploy'
