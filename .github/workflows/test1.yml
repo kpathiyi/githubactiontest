@@ -96,8 +96,7 @@ jobs:
         echo '---- does image have yq? ----'
         yq --version
         echo '---- does image have scala? ----'
-        sudo apt update
-        sudo apt install scala
+        sudo apt install -y scala
         scala -version
         
         echo '---- end of script ----'
