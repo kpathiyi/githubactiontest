@@ -88,6 +88,7 @@ jobs:
         envsubst < welcome.txt
         echo '---- does image have jq? ----'
         echo '{"id": 123, "data": "{\"name\":\"Alice\",\"age\":30}"}' | jq '.data | fromjson | .name' 
+        curl -X GET https://www.google.com
 
   deploy:
     name: 'deploy'
