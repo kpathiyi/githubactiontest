@@ -1,0 +1,22 @@
+version: 0.2
+
+env:
+  variables:
+    DB_URL: "localhost:5432"
+phases:
+  pre_build:
+    commands:
+      - echo pre-build started on `date`
+      - pwd
+      - ls
+      - echo "DB_URL [$DB_URL]"
+  build:
+    commands:
+      - pwd
+      - ls
+      - echo build started on `date`
+      - docker run hello-world
+
+  post_build:
+    commands:
+      - echo post-build completed on `date`
