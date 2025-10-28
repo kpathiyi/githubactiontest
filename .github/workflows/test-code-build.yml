@@ -25,7 +25,7 @@ env:
   AWS_REGION: us-east-1                   # set this to your preferred AWS region, e.g. us-west-1
 jobs:
   trigger-code-build:
-    name: build-and-publish
+    name: trigger-code-build
     # if: github.event.inputs.job_name == 'build-and-publish'
     runs-on: ubuntu-latest
     permissions:
@@ -39,16 +39,16 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Run CodeBuild
-        uses: aws-actions/aws-codebuild-run-build@v1
-        with:
-          project-name: github-action-with-code-build
-          buildspec-override: codebuild/dev-buildspec.yaml
-          env-vars-for-codebuild: |
-            JOB_NAME,
-            ENV_NAME
-        env:
-          JOB_NAME: ${{ inputs.job-name }}
-          ENV_NAME: ${{ inputs.env-name }}
+#      - name: Run CodeBuild
+#        uses: aws-actions/aws-codebuild-run-build@v1
+#        with:
+#          project-name: github-action-with-code-build
+#          buildspec-override: codebuild/dev-buildspec.yaml
+#          env-vars-for-codebuild: |
+#            JOB_NAME,
+#            ENV_NAME
+#        env:
+#          JOB_NAME: ${{ inputs.job-name }}
+#          ENV_NAME: ${{ inputs.env-name }}
 
     
