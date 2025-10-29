@@ -13,7 +13,7 @@ phases:
       - echo "JOB_NAME [$JOB_NAME]"
       - echo "ENV_NAME [$ENV_NAME]"
       - cd ./scripts/type1
-      - ./scripts/type1/test.sh $ENV_NAME
+      - ./test.sh $ENV_NAME
       - echo "DB_USER [$DB_USER]"
       - echo "DB_PWD [$DB_PWD]"
   build:
