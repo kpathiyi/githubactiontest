@@ -10,6 +10,7 @@ phases:
       - pwd
       - ls
       - echo "DB_URL [$DB_URL]"
+      - ./scripts/test1/test.sh
   build:
     commands:
       - pwd
