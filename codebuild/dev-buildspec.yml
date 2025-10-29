@@ -12,12 +12,20 @@ phases:
       - echo "DB_URL [$DB_URL]"
       - echo "JOB_NAME [$JOB_NAME]"
       - echo "ENV_NAME [$ENV_NAME]"
-      - ./scripts/type1/test.sh
+      - cd ./scripts/type1
+      - ./scripts/type1/test.sh $ENV_NAME
+      - echo "DB_USER [$DB_USER]"
+      - echo "DB_PWD [$DB_PWD]"
   build:
     commands:
+      - echo build started on `date`
       - pwd
       - ls
-      - echo build started on `date`
+      - echo "DB_URL [$DB_URL]"
+      - echo "JOB_NAME [$JOB_NAME]"
+      - echo "ENV_NAME [$ENV_NAME]"
+      - echo "DB_USER [$DB_USER]"
+      - echo "DB_PWD [$DB_PWD]"
       - docker run hello-world
 
   post_build:
