@@ -2,9 +2,10 @@
 env_name=$1
 echo "hello from test.sh $env_name"
 
-set -o allexport
+echo "DB_USER [$DB_USER] from test.sh before source command"
+echo "DB_USER [$DB_PWD] from test.sh before source command"
+
 source envs/$env_name.sh
-set +o allexport
 
 echo "DB_USER [$DB_USER] from test.sh"
 echo "DB_USER [$DB_PWD] from test.sh"
