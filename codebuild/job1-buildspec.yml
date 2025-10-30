@@ -18,8 +18,8 @@ phases:
       - echo "DB_PWD2 [$DB_PWD2] set from test.sh is not visible"
       - cd ../../
       - source ./scripts/type1/envs/dev.sh
-      - echo "DB_USER [$DB_USER] after running source dev.sh from dev-buildspec.yml"
-      - echo "DB_PWD [$DB_PWD] after running source dev.sh from dev-buildspec.yml"
+      - echo "DB_USER [$DB_USER] after running source dev.sh from job1-buildspec.yml"
+      - echo "DB_PWD [$DB_PWD] after running source dev.sh from job1-buildspec.yml"
   build:
     commands:
       - echo build started on `date`

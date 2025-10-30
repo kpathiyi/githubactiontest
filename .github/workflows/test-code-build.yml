@@ -44,7 +44,7 @@ jobs:
         uses: aws-actions/aws-codebuild-run-build@v1
         with:
           project-name: github-action-with-code-build
-          buildspec-override: codebuild/dev-buildspec.yml
+          buildspec-override: codebuild/job1-buildspec.yml
           env-vars-for-codebuild: |
             JOB_NAME,
             ENV_NAME
