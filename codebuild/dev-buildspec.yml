@@ -12,7 +12,6 @@ phases:
       - echo "DB_URL [$DB_URL]"
       - echo "JOB_NAME [$JOB_NAME]"
       - echo "ENV_NAME [$ENV_NAME]"
-      - source ./scripts/type1/envs/dev.sh
       - cd ./scripts/type1
       - ./test.sh $ENV_NAME
       - echo "DB_USER [$DB_USER]"

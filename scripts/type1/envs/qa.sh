@@ -1,0 +1,2 @@
+DB_USER=qauser1
+DB_PWD=qapwd1
