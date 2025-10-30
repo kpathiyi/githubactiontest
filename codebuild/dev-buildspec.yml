@@ -14,10 +14,8 @@ phases:
       - echo "ENV_NAME [$ENV_NAME]"
       - cd ./scripts/type1
       - ./test.sh $ENV_NAME
-      - echo "DB_USER [$DB_USER]"
-      - echo "DB_PWD [$DB_PWD]"
-      - echo "DB_USER2 [$DB_USER2]"
-      - echo "DB_PWD2 [$DB_PWD2]"
+      - echo "DB_USER2 [$DB_USER2] set from test.sh is not visible"
+      - echo "DB_PWD2 [$DB_PWD2] set from test.sh is not visible"
       - cd ../../
       - source ./scripts/type1/envs/dev.sh
       - echo "DB_USER [$DB_USER] after running source dev.sh from dev-buildspec.yml"
