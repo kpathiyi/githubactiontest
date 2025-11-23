@@ -81,7 +81,7 @@ jobs:
         docker tag githubactiontest:latest $ECR_REGISTRY/$ECR_REPOSITORY:${IMAGE_TAG}
         
         aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin $ECR_REGISTRY
-        # docker push $ECR_REGISTRY/$ECR_REPOSITORY:${IMAGE_TAG}
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:${IMAGE_TAG}
         echo '---- does image have envsubst?  ----'
         echo 'Time to say $HELLO' > welcome.txt
         export HELLO="good morning"
